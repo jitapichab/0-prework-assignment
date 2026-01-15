@@ -2,8 +2,8 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install Jupyter
-RUN pip install --no-cache-dir jupyter
+# Install Jupyter, PyTorch, NumPy and Matplotlib
+RUN pip install --no-cache-dir jupyter torch numpy matplotlib
 
 # Copy notebook files
 COPY . .
@@ -13,7 +13,3 @@ EXPOSE 8888
 
 # Run Jupyter Notebook
 CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
-
-
-
-
